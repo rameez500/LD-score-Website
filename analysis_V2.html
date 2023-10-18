@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+iframe {
+ width: 100%;
+ height: 100vh; /* 100% of the viewport height */
+ border: none; /* Remove iframe border if desired */
+ }
+ 
+
+.container img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 25%;
+  width: 14%;
+}
+
+.center1 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  height: 40%;
+}
+
+.center2 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  height: 80%;
+}
+
+.center3 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  height: 70%;
+}
+ 
+</style>
+</head>
+<body>
+
+<h2>LD Score Enrichment Analysis</h2>
+
+<div class="container">
+  <img src="EU_BehaviorialGenAddictionLab_vt_280bk-151x300.jpg" alt="A beautiful image">
+</div>
+
+<br>
+<br>
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Home')" id="defaultOpen">Home</button>
+  <button class="tablinks" onclick="openCity(event, 'Tutorial')">Tutorial</button>
+  <button class="tablinks" onclick="openCity(event, 'FAQs')">FAQs</button>
+</div>
+
+
+<div id="Home" class="tabcontent">
+<body>
+      <h1>Enrichment Analyses using the Linkage Disequilibrium Score Regression (LDSC)</h1>
+      <br>
+      <p style = "font-family:georgia,garamond,serif;font-size:17px;">
+         We employed the LD score regression method as a fundamental tool in our analysis. This method serves a dual purpose, 
+         enabling us to calculate both partitioned heritability and conduct enrichment analysis for Genome-Wide Association Studies (GWAS).
+      </p>
+      <br>
+      <p style = "font-family:georgia,garamond,serif;font-size:17px;">
+        <strong>Partitioned Heritability:</strong> LD score regression allows us to estimate the heritability of a complex trait 
+        that is attributable to specific genomic regions or functional categories.
+      </p>
+      
+      <p style = "font-family:georgia,garamond,serif;font-size:17px;">
+        <strong>Enrichment Analysis: :</strong> In addition to heritability estimation, LD score regression enables us to perform 
+         enrichment analysis for GWAS. This involves assessing whether certain categories of genetic variants or functional elements 
+         are overrepresented among the variants associated with the trait of interest.
+      </p>
+<br>
+<br>
+<br>
+<!--
+<p style = "font-family:georgia,garamond,serif;font-size:20px;">
+   Here are the two options for upload the Gene list and Summary Statistic below:
+</p>
+-->
+
+  <!-- HTML5 Input Form  -->
+        <form action="analysis.php" method="POST" enctype="multipart/form-data">
+		  <p style = "font-family:georgia,garamond,serif;font-size:16px;">
+		  Upload Gene List. Please see examples of input datasets: 
+                   <a href="http://34.122.49.0/gene_range.php"> Format #1! </a>,
+                   <a href="http://34.122.49.0/gene_eng.php"> Format #2! </a> and
+                   <a href="http://34.122.49.0/gene_list.php"> Format #3! </a>
+		  </p>
+          <input type="file" name="fileToUpload" id="fileToUpload"> <br> <br>
+		  
+		  <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+		  Upload summary statistic. See <a href="http://34.122.49.0/sumstat.php"> Example! </a>
+		  </p>		  		  
+          <input type="file" name="sumStat" id="sumStat"> <br> <br>
+          <input type="submit" value="Upload" name="submit">
+        </form>
+
+<br>
+<p style = "font-family:georgia,garamond,serif;font-size:20px;">
+* Both the summary statistics and gene list are currently based on build 37.
+We are in the process of updating it to allow for build 38. 
+</p>
+	  
+
+<br>
+
+<?php
+    $output = shell_exec("ps -ef | grep python | wc -l | awk '{print $1 -2}' ");
+    echo "Notice that there are currently $output users running this website. If there are more than four users using this website, kindly refrain from accessing it and return when the number of users is less than four. ";
+?>
+
+<br>
+<br>
+<br>
+
+      <p style = "font-family:georgia,garamond,serif;font-size:20px;">
+        Here are the guideline steps on how to use this site:
+      </p>
+
+      <p style = "font-family:georgia,garamond,serif;font-size:20px;">
+        1. When you upload your gene list and summary statistics using either option, a Job ID will be generated. 
+        <i>Please save this ID and use it in the following link:</i> <a href="http://34.122.49.0/analysis_run.php">http://34.122.49.0/analysis_run.php</a>
+      </p>
+<br>
+<br>
+<!-- <img src="image/upload_gene.png" alt="A beautiful image"> -->
+<img src="image/verify_gene.png" alt="pic1" class="center1">
+<br>
+<br>
+<br>
+<br>
+      <p style = "font-family:georgia,garamond,serif;font-size:20px;">
+        2. Enter your saved Job ID along with the names of your gene files.
+      </p>
+<br>
+<br>
+<img src="image/analysis_id.png" alt="pic2" class="center2">
+<br>
+<br>
+<br>
+<br>
+<br>
+      <p style = "font-family:georgia,garamond,serif;font-size:20px;">
+        3. Once you submit, wait for a few hours, and then open the link: 
+       <a href="http://34.122.49.0/analysis_result_V3.php ">http://34.122.49.0/analysis_result_V3.php </a> .
+        Enter your Job ID to view your results. 
+      </p>
+<br>
+<br>
+<img src="image/enrichment_result.png" alt="pic3", class="center3">
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;font-weight: bold">
+         References
+      </p>
+
+      <cite>Huggett, Spencer B., Emma C. Johnson, Alexander S. Hatoum, Dongbing Lai, Jenani Srijeyanthan,
+       Jason A. Bubier, Elissa J. Chesler et al. "Genes identified in rodent studies of alcohol intake are enriched for heritabili>
+       of human substance use." Alcoholism: Clinical and Experimental Research 45, no. 12 (2021): 2485-2494.</cite>
+      <br>
+      <br>
+      <cite>Palmer, Rohan HC, Chelsie E. Benca-Bachman, Spencer B. Huggett, Jason A. Bubier, John E. McGeary,
+       Nikhil Ramgiri, Jenani Srijeyanthan et al. "Multi-omic and multi-species meta-analyses of nicotine consumption."
+       Translational psychiatry 11, no. 1 (2021): 98.</cite>
+      <br>
+      <br>
+      <cite>Benca-Bachman, Chelsie E., Jason Bubier, Rameez A. Syed, Pamela N. Romero Villela, and Rohan HC Palmer.
+      "Polygenic influences on the behavioral effects of alcohol withdrawal in a mixed-ancestry population
+      from the collaborative study on the genetics of alcoholism (COGA)."
+     Molecular and Cellular Neuroscience 125 (2023): 103851.</cite>
+<br>
+<br>
+<br>
+<br>
+
+     <center> <p style = "font-family:georgia,garamond,serif;font-size:22px;font-weight: bold">
+        BGA Lab 
+      </p> </center>
+      <center> <p style = "font-family:georgia,garamond,serif;font-size:16px;">
+        About | Q: rasyed2@emory.edu         
+      </p> </center>
+
+
+ </body> 
+</div>
+
+
+
+<div id="Tutorial" class="tabcontent">
+   <iframe  src="github_store/LDscore_Geneweaver_V3.html"></iframe>
+</div>
+
+
+
+
+
+
+<div id="FAQs" class="tabcontent">
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+        <strong>1.Which build are the summary statistics and gene list based on?</strong>
+      </p>
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+        Both the summary statistics and gene list are currently based on build 37.
+        We are in the process of updating to build 38.                                              
+      </p>
+<br>
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+        <strong>2. Is the summary statistic based on the human or mouse genome?</strong>                                              
+      </p>
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+        The gene list is based on the mouse genome, while the summary statistics are based on the human genome.
+      </p>
+
+<br>
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+        <strong>3. How many megabytes can I upload?</strong>                                              
+      </p>
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+        You can upload files up to 100 megabytes in size.
+      </p>
+</div>
+
+
+
+
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+   
+</body>
+</html> 

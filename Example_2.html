@@ -1,0 +1,16 @@
+<html>
+<body>
+    <h1>Running R Script</h1>
+    <?php
+    // Run R script
+    //$output = shell_exec("/usr/bin/Rscript --help");
+    //$output = shell_exec("/usr/bin/R --help");
+    //$output = shell_exec("/usr/bin/python --help");
+    $output = shell_exec("ps -ef | grep python | wc -l | awk '{print $1 -2}' ");
+    //$output = shell_exec("/home/princessbaab33/miniconda3/envs/ldsc/bin/python /home/princessbaab33/ldsc/./ldsc.py --help");
+    // Display output
+    //echo "shoiab akther <pre>$output</pre>";
+    echo "shoiab akther $output "; 
+    ?>
+</body>
+</html>

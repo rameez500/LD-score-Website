@@ -1,0 +1,111 @@
+<!DOCTYPE html> 
+<html> 
+ <head> 
+  <title> HTML5 PHP File Upload Example </title> 
+ </head> 
+ <body>
+      <h1>Heritability Enrichment  using the LDSC tool</h1>
+      <br>
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+         We employed the LD score regression method as a fundamental tool in our analysis. This method serves a dual purpose, 
+         enabling us to calculate both partitioned heritability and conduct enrichment analysis for Genome-Wide Association Studies (GWAS).
+      </p>
+      <br>
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+        <strong>Partitioned Heritability:</strong> LD score regression allows us to estimate the heritability of a complex trait 
+        that is attributable to specific genomic regions or functional categories.
+      </p>
+      
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+        <strong>Enrichment Analysis: :</strong> In addition to heritability estimation, LD score regression enables us to perform 
+         enrichment analysis for GWAS. This involves assessing whether certain categories of genetic variants or functional elements 
+         are overrepresented among the variants associated with the trait of interest.
+      </p>
+<br>
+<br>
+
+<p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+   Please see the example input dataset:
+</p>
+<p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+   Genelist: <a href="http://34.122.49.0/geneset.php">Visit site! </a>
+</p>
+<p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+   Summary Stat: <a href="http://34.122.49.0/sumstat.php">Visit site! </a>
+</p>
+
+<br>
+
+<p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+   This tutorial( <a href="http://34.122.49.0/LDscore_Geneweaver.html">Visit site! </a> )
+provides a step-by-step walkthrough on how to generate an example gene 
+set and summary statistics. It will also demonstrate how to use this website for further analysis.
+</p>
+
+<br>
+<p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+   Upload the Gene list and Summary Statistic below:
+</p>
+  <!-- HTML5 Input Form  -->
+        <form action="analysis.php" method="POST" enctype="multipart/form-data">
+          <label for="fileToUpload">Select a Gene list:</label> <br>
+          <input type="file" name="fileToUpload" id="fileToUpload"> <br> <br>
+          <label for="sumStat">Select a summary statistic:</label> <br>
+          <input type="file" name="sumStat" id="sumStat"> <br> <br>
+          <input type="submit" value="Upload" name="submit">
+        </form>
+
+
+<br>
+<br>
+<br>
+<?php
+    $output = shell_exec("ps -ef | grep python | wc -l | awk '{print $1 -2}' ");
+    echo "Notice that there are currently $output users running this website. If there are more than four users using this website, kindly refrain from accessing it and return when the number of users is less than four. ";
+?>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+        <h2>FAQs:</h2>
+      </p>
+
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+        <strong>1.Which build are the summary statistics and gene list based on?</strong>
+      </p>
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+        Both the summary statistics and gene list are currently based on build 37.
+        We are in the process of updating to build 38.                                              
+      </p>
+<br>
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+        <strong>2. Is the summary statistic based on the human or mouse genome?</strong>                                              
+      </p>
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+        The gene list is based on the mouse genome, while the summary statistics are based on the human genome.
+      </p>
+
+<br>
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+        <strong>3. How many megabytes can I upload?</strong>                                              
+      </p>
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+        You can upload files up to 100 megabytes in size.
+      </p>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<img src="EU_BehaviorialGenAddictionLab_vt_280bk-151x300.jpg" alt="A beautiful image">
+
+ </body> 
+</html>
