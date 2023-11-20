@@ -1,0 +1,39 @@
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--h2 /home/princessbaab33/analysis/BMI.sumstats.gz \
+--ref-ld-chr r_765850309/test.,/home/princessbaab33/analysis/baseline/baselineLD. \
+--w-ld-chr / 
+
+Beginning analysis at Tue Aug 29 20:23:09 2023
+Reading summary statistics from /home/princessbaab33/analysis/BMI.sumstats.gz ...
+Read summary statistics for 1040803 SNPs.
+Reading reference panel LD Score from r_765850309/test.,/home/princessbaab33/analysis/baseline/baselineLD.[1-22] ... (ldscore_fromlist)
+Read reference panel LD Scores for 1190321 SNPs.
+Removing partitioned LD Scores with zero variance.
+Reading regression weight LD Score from /[1-22] ... (ldscore_fromlist)
+Traceback (most recent call last):
+  File "/home/princessbaab33/ldsc/ldsc.py", line 644, in <module>
+    sumstats.estimate_h2(args, log)
+  File "/home/princessbaab33/ldsc/ldscore/sumstats.py", line 326, in estimate_h2
+    args, log, args.h2)
+  File "/home/princessbaab33/ldsc/ldscore/sumstats.py", line 247, in _read_ld_sumstats
+    w_ld = _read_w_ld(args, log)
+  File "/home/princessbaab33/ldsc/ldscore/sumstats.py", line 134, in _read_w_ld
+    'regression weight LD Score', ps.ldscore_fromlist)
+  File "/home/princessbaab33/ldsc/ldscore/sumstats.py", line 152, in _read_chr_split_files
+    out = parsefunc(_splitp(chr_arg), _N_CHR, **kwargs)
+  File "/home/princessbaab33/ldsc/ldscore/parse.py", line 103, in ldscore_fromlist
+    y = ldscore(fh, num)
+  File "/home/princessbaab33/ldsc/ldscore/parse.py", line 147, in ldscore
+    first_fh = sub_chr(fh, chrs[0]) + suffix
+IndexError: list index out of range
+
+Analysis finished at Tue Aug 29 20:24:08 2023
+Total time elapsed: 58.11s
